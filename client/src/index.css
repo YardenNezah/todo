@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
+
+body {
+  margin: 0;
+  background-color: hsl(180, 52%, 96%);
+  Font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
