@@ -13,8 +13,15 @@ import readAbook from "../../assets/readAbook.jpg";
 import run from '../../assets/run.webp';
 import cook from '../../assets/cook.webp';
 import completedicon from '../../assets/completed-icon.jpg';
+import ItemHistory from './ItemsHistory';
 
 const Item = ({task}) => {
+    const removeTask = (e) => {
+        let child = e.parentElement;
+        let parent = child.parentElement;
+        parent.removeChild(child);
+    };
+
     function getImg() {
         const taskTitle = task.taskTitle;
         let taskImg;
@@ -48,6 +55,14 @@ const Item = ({task}) => {
 
     return (
         <div className="task-item">
+            <button className="delete-btn"
+                id={
+                    task.id
+                }
+                onClick={
+                    (e) => removeTask(e.target)
+            }>X</button>
+
             <div>
                 <img src={
                         getImg()
@@ -58,10 +73,10 @@ const Item = ({task}) => {
             <div className="right-item">
 
                 <div className="task-title">
-                    <p className="title">
+                    <a href="#addDetails" className="title">
                         {
                         task.taskTitle
-                    }</p>
+                    }</a>
                 </div>
 
                 <div class="task-details">
@@ -70,11 +85,12 @@ const Item = ({task}) => {
                             {
                             task.taskDuration
                         }
-                            <span>Hours</span></div>
+                            <span>Hours</span>
+                        </div>
                         <div className="task-location">
-                        <i class="bi bi-geo-alt-fill"></i>
+                            <i class="bi bi-geo-alt-fill"></i>
 
-                        {
+                            {
                             task.taskLocation
                         }</div>
                     </div>
@@ -90,14 +106,60 @@ const Item = ({task}) => {
                     </div>
                 </div>
             </div>
-            <div className='crud-btns'>
-                <button className="btn btn-outline-warning">Edit</button>
-                <br/>
-                <button className="btn btn-outline-danger" >Delete</button>
-            </div>
+            <br/>
             <img src={completedicon}
                 alt="completed"
                 className='completed'></img>
+
+            <div className="add-details popup" id="addDetails">
+                <h1>Task Details</h1>
+                <a href="" class="close">&times;</a>
+                <div>
+                    <h2>Title:</h2>
+                    {
+                    task.taskTitle
+                } </div>
+                <div>
+                    <h2>Description:</h2>
+                    {
+                    task.taskDescription
+                } </div>
+                <div>
+                    <h2>Location:</h2>
+                    {
+                    task.taskLocation
+                } </div>
+                <div>
+                    <h2>Maximum Time:</h2>
+                    {
+                    task.maxTime
+                } </div>
+                <div className="title">
+                    <h2>Duration:</h2>
+                    {
+                    task.taskDuration
+                }
+                    <span>Hours</span>
+                </div>
+                <div className="title">
+                    <h2>Urgency Level:</h2>
+                    {
+                    task.urgencyLevel
+                } </div>
+                <div className="title">
+                    <h2>Assigned People:</h2>
+                    {
+                    task.taskAssigned.map((assigned) => {
+                        return <ul>
+                            <li>{assigned}</li>
+                        </ul>
+                })
+                } </div>
+                <div className="title">
+                    <h2>Is Completed?</h2>
+                    false
+                </div>
+            </div>
         </div>
 
     )

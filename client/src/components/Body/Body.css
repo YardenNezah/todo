@@ -1,7 +1,5 @@
 :root {
-    --background-color: #f2efe8;
     --beige-color: #c2b38a;
-    --light-color: #e5e5e5;
     --hover-color: #f3eceb;
     --dark-brown-color: #81734c;
     --cream-color: #dad1d0;
@@ -25,12 +23,13 @@ body {
     color: var(--dark-brown-color);
     font-weight: bold;
     margin: 20px;
-    cursor: pointer;
     border-radius: 10px;
+    z-index: 0;
 }
 
 .task-details {
     width: 100px;
+    margin-left: 80px;
     display: flex;
     padding: 3px;
     font-size: 10px;
@@ -56,42 +55,31 @@ body {
 }
 
 .task-img {
-    margin: 25px 0 0 20px;
+    margin: 25px 500px 0 0;
     width: 200px;
     height: 110px;
 }
 
-.dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: var(--cream-color);
-    margin-top: 8px;
-}
-
 .task-title {
-    text-align: left;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 32px;
+    margin-left: 35px;
+    color: var(--dark-brown-color);
 }
 
 .completed {
     cursor: pointer;
 }
 
-.crud-btns {
-    margin-top: 40px;
-    position: absolute;
-    right: 28%;
+.completed:hover {
+    background-color: var(--cream-color);
 }
 
 button {
     width: 70px;
 }
 
-.add-item-btn {
-    margin-right: 1100px;
-    margin-top: 20px;
+.add-item-btn, .history-btn {
     position: relative;
     height: 60px;
     width: 60px;
@@ -99,16 +87,41 @@ button {
     border-radius: 30px;
     background-color: var(--cream-color);
     cursor: pointer;
+    margin: 5px;
 }
 
-.add-item-content, .close {
+.add-item-content, .close, .history-content {
     color: var(--white);
     text-decoration: none;
-    position: absolute;
     bottom: 3px;
     left: 15px;
     font-size: 40px;
     font-weight: bold;
+}
+
+.add-item-content {
+    position: absolute;
+}
+
+.history-content {
+    margin: 5px;
+}
+
+.delete-btn {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--cream-color);
+    cursor: pointer;
+    border: 1px solid var(--dark-brown-color);
+}
+
+.delete-btn:hover {
+    color: red;
 }
 
 .add-item-content:hover, .close:hover, .history-content:hover {
@@ -158,27 +171,33 @@ select {
     color: var(--cream-color);
 }
 
-.history-btn {
-    margin-right: 1000px;
-    margin-top: 20px;
-    position: relative;
-    height: 40px;
-    width: 130px;
-    border: 1px solid var(--dark-brown-color);
-    border-radius: 50px;
-    background-color: var(--cream-color);
-    cursor: pointer;
-}
-
-.history-content {
-    color: var(--white);
-    text-decoration: none;
-    bottom: 3px;
-    left: 15px;
-    font-size: 20px;
-    font-weight: bold;
-}
-
 span {
     margin: 4px;
 }
+
+.add-details {
+    text-align: left;
+    color: var(--beige-color);
+}
+
+h1 {
+    color: var(--dark-brown-color);
+}
+
+h2 {
+    font-weight: bold;
+    display: inline;
+    margin: 15px;
+    color: var(--dark-brown-color);
+}
+
+.title {
+    color: var(--dark-brown-color);
+    text-decoration: none;
+}
+
+.title:hover {
+    color: var(--beige-color);
+    text-decoration: none;
+}
+

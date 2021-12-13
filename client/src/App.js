@@ -9,13 +9,11 @@ import ItemsHistory from './components/Body/ItemsHistory';
 
 function App() {
     const [dataRes, setDataRes] = useState();
-    const fetchData = async () => {
-        try {
-            await axios.get('http://localhost:8080/data').then(({data}) => setDataRes(data.data));
-        } catch (err) {
+    const fetchData = () => {
+        axios.get('http://localhost:8080/data').then(({data}) => setDataRes(data.data)).catch((err) => {
             console.log(err);
-        }
-    };
+        });
+    }
 
     useEffect(() => {
         fetchData();
@@ -27,9 +25,24 @@ function App() {
                 <Header/>
             </header>
             <div className="container">
-                {dataRes &&<AddItem data={dataRes} setData={setDataRes}/>}
-                <ItemsHistory />
-                {dataRes &&<Container data={dataRes}/>}
+                <div className='flex-btns'>
+                    <div> {
+                        dataRes &&< AddItem data = {
+                            dataRes
+                        }
+                        setData = {
+                            setDataRes
+                        } />
+                    } </div>
+                    <div>
+                        <ItemsHistory/>
+                    </div>
+                 </div>
+                 {
+                    dataRes &&< Container data = {
+                        dataRes
+                    } />
+                }
             </div>
             <footer>
                 <Footer/>
