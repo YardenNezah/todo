@@ -5,7 +5,7 @@ module.exports.createListing = function (details) {
     if (!details)
         return {
             status: "404",
-            message: "Details Requierd to create a listing",
+            message: "Details Requierd to create a Task",
         };
     const lastIndex = entries[entries.length - 1];
     const newEntrie = {
@@ -23,7 +23,7 @@ module.exports.createListing = function (details) {
 
     entries.push(newEntrie);
 
-    return { status: 200, message: "Listing Created" };
+    return { status: 200, message: "Task Created" };
 };
 
 module.exports.getListing = function (searchParams) {
@@ -39,25 +39,25 @@ module.exports.getListing = function (searchParams) {
         }
     }
 
-    return { status: 200, message: "Listing Found", data: entries };
+    return { status: 200, message: "Task Found", data: entries };
 };
 
 module.exports.editListings = function (id, newDetails) {
     const entryID = entries.find((entry) => entry.id == id);
-    if (!entryID) return { status: 404, message: "Listing Not Found" };
+    if (!entryID) return { status: 404, message: "Task Not Found" };
 
     for (const property in newDetails) {
         entries[entryID][property] = newDetails[property];
     }
-    return { status: 200, message: "Listing Edited", data: entries[entryID] };
+    return { status: 200, message: "Tasl Edited", data: entries[entryID] };
 };
 
 module.exports.deleteListing = function (id) {
     const delIndex = entries.find((entry) => entry.id == id);
     if (!delIndex) {
-        return { status: 404, message: "Listing Not Found" };
+        return { status: 404, message: "Task Not Found" };
     }
     entries.splice(delIndex, 1);
 
-    return { status: 200, message: "Listing Deleted" };
+    return { status: 200, message: "Task Deleted" };
 };
